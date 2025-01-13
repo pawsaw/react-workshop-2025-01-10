@@ -1,9 +1,10 @@
 import React from "react";
-import { Book } from "../domain/book";
+import { OnBookClicked } from "./OnBookClicked";
+import { Book } from "../../domain/book";
 
 export interface BookListItemProps {
   book: Book;
-  onBookClicked: (clickedBook: Book) => void;
+  onBookClicked: OnBookClicked;
 }
 
 export const BookListItem: React.FC<BookListItemProps> = ({

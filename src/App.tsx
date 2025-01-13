@@ -1,18 +1,17 @@
 import { AppHeader } from "./commponents/AppHeader";
-import { BookListItem, BookListItemProps } from "./commponents/BookListItem";
+import { BookList, OnBookClicked } from "./commponents/BookList";
 import { exampleBooks } from "./data/exampleBooks";
 import "./index.css";
 
 function App() {
-  const onBookClicked: BookListItemProps["onBookClicked"] = (clickedBook) => {
+  const onBookClicked: OnBookClicked = (clickedBook) => {
     alert(clickedBook.price);
   };
 
   return (
     <div>
       <AppHeader />
-      <BookListItem book={exampleBooks[0]} onBookClicked={onBookClicked} />
-      <BookListItem book={exampleBooks[1]} onBookClicked={onBookClicked} />
+      <BookList books={exampleBooks} onBookClicked={onBookClicked} />
     </div>
   );
 }
