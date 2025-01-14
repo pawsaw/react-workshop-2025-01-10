@@ -1,12 +1,11 @@
-import { useState } from "react";
+export interface CounterProps {
+  count: number;
+  onCountChanged: (count: number) => void;
+}
 
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-
+export const Counter: React.FC<CounterProps> = ({ count, onCountChanged }) => {
   const increment = () => {
-    setTimeout(() => {
-      setCount((prevCount) => prevCount + 1);
-    }, 5000);
+    onCountChanged(count + 1);
   };
 
   return <button onClick={increment}>{count}</button>;
