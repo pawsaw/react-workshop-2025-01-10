@@ -1,12 +1,19 @@
-export interface CounterProps {
-  count: number;
-  onCountChanged: (count: number) => void;
-}
+import { useDispatch, useSelector } from "react-redux";
+import {
+  counterSelector,
+  decrement,
+  increment,
+} from "../domain/counter/store/counterSlice";
 
-export const Counter: React.FC<CounterProps> = ({ count, onCountChanged }) => {
-  const increment = () => {
-    onCountChanged(count + 1);
-  };
+export const Counter: React.FC = () => {
+  const dispatch = useDispatch();
+  const { count } = useSelector(counterSelector);
 
-  return <button onClick={increment}>{count}</button>;
+  return (
+    <div>
+      <button onClick={() => dispatch(increment())}>+</button>
+      {count}
+      <button onClick={() => dispatch(decrement())}>-</button>
+    </div>
+  );
 };

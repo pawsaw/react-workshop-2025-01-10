@@ -1,23 +1,53 @@
-import { useState } from "react";
 import { AppHeader } from "./commponents/AppHeader";
-import { Counter, CounterProps } from "./commponents/Counter";
 
 import "./index.css";
 import { ThemeProvider } from "./domain/theme";
-import { Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const onCountChanged: CounterProps["onCountChanged"] = (count) =>
-    setCount(count);
-
   return (
     <>
-      <ThemeProvider>
-        <AppHeader count={count} />
-        <Counter count={count} onCountChanged={onCountChanged} />
-        <Outlet />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <AppHeader />
+
+          <ul>
+            <li>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "green" : "black",
+                })}
+                to="books"
+              >
+                Books
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "green" : "black",
+                })}
+                to="about"
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "green" : "black",
+                })}
+                to="counter"
+              >
+                Counter
+              </NavLink>
+            </li>
+          </ul>
+          <Outlet />
+        </ThemeProvider>
+      </Provider>
     </>
   );
 }

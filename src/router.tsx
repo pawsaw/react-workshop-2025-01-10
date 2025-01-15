@@ -3,6 +3,7 @@ import App from "./App";
 import { ErrorScreen } from "./screens/ErrorScreen";
 import { BookScreen } from "./screens/BookScreen";
 import { AboutScreen } from "./screens/AboutScreen";
+import { CounterScreen } from "./screens/CounterScreen";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutScreen />,
+      },
+      {
+        path: "counter",
+        element: <CounterScreen />,
       },
       {
         path: "",
